@@ -1,0 +1,25 @@
+---
+title: "my_leaflet"
+author: "Hardison Everett"
+date: "4/1/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Simple leaflet map.  
+```{r map, echo =TRUE}
+library(leaflet)
+
+lat<-state.center$y
+long<-state.center$x
+lab <-state.name
+size<-unname(state.x77[,"Population"])
+my_map <-leaflet()%>%
+        addTiles()%>%
+        addCircles(lng= long,lat = lat, radius= 10*size, label = lab)
+
+my_map
+```
